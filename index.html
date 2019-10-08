@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> Sowingo Front-end interview test - Navroop Sidhu</title>
+        <meta name="description" content="">
+        <meta name="viewppoint" content="width=device-width, inital-scale=1">
+        <meta name="theme-color" content="#fafafa">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+        <!-- <script src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.js"></script> -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script> -->
+        <!-- <link rel="stylesheet" href="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="styles/main.css"> -->
+
+    </head>
+
+    <body>
+        <!--[if IE]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+        
+        <script src="controller/productController.js"></script>
+        <div ng-app="myProductList" ng-controller="myCtrl">
+            <ul>
+                <li ng-repeat="x in products">
+                    {{x}} <span ng-click="deleteItem($index)">&times;</span>
+                </li>
+            </ul>
+            <input ng-model="addProduct">
+            <button ng-click="addItem()">Add item to list</button>
+            <p>{{errorText}}</p>
+        </div>
+    </body>
+</html>
