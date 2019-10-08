@@ -1,9 +1,9 @@
-var app = angular.module("myProductList", []);
+var app = angular.module("myProductList", ['ngMaterial', 'ngMessages']);
 
 app.controller("myCtrl", function($scope, $http){
     //list of products
     $scope.products = ["Milk", "Bread", "Cheese"];
-
+    // $scope.imagePath = 'view/washedout.png';
     // add new item to list
     $scope.addItem = function(){
         $scope.errorText = ""
@@ -21,10 +21,17 @@ app.controller("myCtrl", function($scope, $http){
     }
 
     //fetch data from api
-    $http.get("https://demo1064913.mockable.io/products")
-        .then(function mySuccess(response){
-            console.log(response.data)
+    $http({
+        method: "GET",
+        url: "https://demo1064913.mockable.io/products"
+    }).then(function mySuccess(response){
+            $scope.productList = response.data.products
+            console.log(response.data.products)
         }, function myError(response) {
-            console.log(response.statusText)
-        });
+            $scope.productList = response.statusText
+    });
 });
+
+app.controller('AppCtrl', function($scope) {
+    $scope.imagePath = 'img/washedout.png';
+  });
