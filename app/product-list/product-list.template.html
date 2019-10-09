@@ -1,40 +1,62 @@
 <div class="product-list">
-        <div class="container-fluid">
-        <h1> Product List </h1>
-        <div class="row">
-            <div class="col-md2">
-                <input ng-model="query.subcategory.name" placeholder="Search by Name"/>
+    <h1>SOWINGO</h1>
+    <md-content>
+        <md-toolbar class="md-hue-1">
+            <div class="md-toolbar-tools">
+                <md-button class="md-icon-button" aria-label="Favorite">
+                    <md-icon md-svg-src="img/icons/search.svg"></md-icon>
+                </md-button>
+
+                <input flex="" type="text" ng-model="query.subcategory.name" placeholder="Search by Name"> 
+                <!-- category selector -->
+              
+                        
+                <md-select ng-model="selectedCategory" md-selected-text="getSelectedText()">
+                    <md-optgroup label="category">
+                        <md-option ng-repeat="item in category" ng-value="item">{{item.subcategory.name}}</md-option>
+                    </md-optgroup>
+                </md-select>
+                
+                <!-- fav button -->
+                <md-button class="md-icon-button" aria-label="Favorite">
+                     <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+                </md-button>
             </div>
+        </md-toolbar>
+    </md-content>
+
+    <!-- Product List -->
+
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-4" ng-repeat="item in productList | filter:query:strict">
+            <div class="col-3" ng-repeat="item in productList | filter:query:strict | filter:selectedCategory.subcategory.name">
                 <md-content class="md-padding" layout-xs="column" layout="row">
-                        <div flex-xs flex-gt-xs="50" layout="column">
+                        <div flex-xs flex-gt-xs=auto layout="column">
                             <md-card>
                                 <img ng-src="{{item.main_image}}" class="md-card-image" alt="{{item.subcategory.name}}">
                                 <md-card-title>
-                                    <md-card-title-text>
-                                        <span class="md-headline">{{item.subcategory.name}}</span>
-                                    </md-card-title-text>
+                                    <!-- <md-card-title-text>
+                                        <span class="md-headline">{{item.name}}</span>
+                                    </md-card-title-text> -->
                                 </md-card-title>
-                                <md-card-content>
-                                    <p>
-                                        {{item.description}}
-                                    </p>
-                                    <p>{{ item.vendor_inventory[0].list_price}}</p>
+                                <md-card-content layout-align="end center">
+                                    <p>{{item.description}}</p>
+                                </md-card-content>
+                                <md-card-content layout-align="column">
+                                        <p> Your Price ${{ item.vendor_inventory[0].list_price}}</p>
                                 </md-card-content>
                                 <md-card-actions layout="row" layout-align="end center">
+                                    
                                     <md-button class="md-icon-button" aria-label="Favorite">
-                                          <md-icon md-svg-src="img/icons/favorite.svg"></md-icon>
+                                        <md-icon md-svg-src="img/icons/favorite.svg"></md-icon>
                                     </md-button>
-                                    <md-button class="md-raised md-warn">Add To Cart</md-button>
+                                    <md-button class="md-raised md-primary">Add To Cart</md-button>
                                 </md-card-actions>    
                             </md-card>
 
                         </div>
                 </md-content>   
             </div>
-        </div>
-            
-        </div>
-        </div>
+        </div>         
     </div>
+</div>

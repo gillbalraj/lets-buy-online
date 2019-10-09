@@ -11,8 +11,17 @@ angular.
                         method: "GET",
                         url: "https://demo1064913.mockable.io/products"
                     }).then(function mySuccess(response){
-                            var self = this;
-                            $scope.productList = response.data.products
+                            $scope.productList = response.data.products;
+                            $scope.category = response.data.products;
+                            $scope.selectedCategory;
+                            $scope.getSelectedText = function(){
+                                if($scope.selectedCategory !== undefined){
+                                    return $scope.selectedCategory.subcategory.name;
+                                } else {
+                                    return "Categories"
+                                }
+                            };
+
                             // this.productList = response.data.products
                             console.log("from component", response.data.products)
                         }, function myError(response) {
