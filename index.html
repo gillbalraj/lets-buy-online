@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="sowingoApp">
     <head>
         <meta charset="utf-8">
         <title> Sowingo Front-end interview test - Navroop Sidhu</title>
         <meta name="description" content="">
         <meta name="viewppoint" content="width=device-width, inital-scale=1">
         <meta name="theme-color" content="#fafafa">
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script> -->       
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">  
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="styles/main.css">
 
@@ -22,52 +21,14 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-messages.min.js"></script>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-route.js"></script> 
         <!-- Angular Material Library -->
         <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
         <script src="controller/productController.js"></script>
-       
-        <div ng-app="myProductList" ng-controller="myCtrl" ng-cloak="" class="tabsdemoCenterTabs">
-            <ul>
-                <li ng-repeat="x in products">
-                    {{x}} <span ng-click="deleteItem($index)">&times;</span>
-                </li>
-            </ul>
-            <input ng-model="addProduct">
-            <button ng-click="addItem()">Add item to list</button>
-            <p>{{errorText}}</p>
-
-            <!-- print product list and other data needed for tiles -->
-            <ul>
-                <li ng-repeat="item in productList">
-                   
-                    <md-content class="md-padding" layout-xs="column" layout="row">
-                            <div flex-xs flex-gt-xs="50" layout="column">
-                                <md-card>
-                                    <img ng-src="{{item.main_image}}" class="md-card-image" alt="Washed Out">
-                                    <md-card-title>
-                                        <md-card-title-text>
-                                            <span class="md-headline">{{item.subcategory.name}}</span>
-                                        </md-card-title-text>
-                                    </md-card-title>
-                                    <md-card-content>
-                                        <p>
-                                            {{item.description}}
-                                        </p>
-                                        <p>{{ item.vendor_inventory[0].list_price}}</p>
-                                    </md-card-content>
-                                    <md-card-actions layout="row" layout-align="end center">
-                                        <md-button class="md-icon-button" aria-label="Favorite">
-                                            <!-- <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon> -->
-                                        </md-button>
-                                        <md-button class="md-raised md-warn">Add To Cart</md-button>
-                                    </md-card-actions>
-                                </md-card>
-                        
-                            </div>
-                    </md-content>
-                </li>
-            </ul>
-        </div>
+        <script src="app/app.module.js"></script>
+        <script src="app/product-list/product-list.module.js"></script>
+        <script src="app/product-list/product-list.component.js"></script>
+ 
+        <product-list></product-list>
     </body>
 </html>
