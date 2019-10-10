@@ -6,6 +6,9 @@ angular.
                     when('/products', {
                         template: '<product-list></product-list>'
                     }). 
+                    when('/products/:productId', {
+                        template: '<product-in-cart></product-in-cart>'
+                    }).
                     otherwise('/products');
             }
     ]);

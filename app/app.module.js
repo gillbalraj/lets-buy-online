@@ -1,6 +1,7 @@
 angular.module("sowingoApp", [
-    'productList',
     'ngRoute',
+    'productList',
+    'productInCart',
     'ngMaterial',
     'ngMessages',
 ]);

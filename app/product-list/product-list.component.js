@@ -14,6 +14,17 @@ angular.
                             $scope.productList = response.data.products;
                             $scope.category = response.data.products;
                             $scope.selectedCategory;
+
+                            //test add to cart
+                            $scope.productsInCart = [];
+                            $scope.addProductsInCart = function (){
+                                console.log("add to cart clicked");
+            
+                                    $scope.productsInCart.push($scope.productList)
+                                    console.log($scope.productList)
+                               
+                            }
+
                             $scope.getSelectedText = function(){
                                 if($scope.selectedCategory !== undefined){
                                     return $scope.selectedCategory.subcategory.name;
@@ -28,5 +39,6 @@ angular.
                             this.productList = response.statusText
                     });
                  }
-            ]     
+            ]                   
+                     
         });
